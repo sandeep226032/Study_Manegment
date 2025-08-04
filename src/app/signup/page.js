@@ -1,22 +1,10 @@
-'use client'
-import { useSearchParams } from "next/navigation";
-import Schoolsign from "../../componenets/schoolsign.js";
-import Studentsign from "../../componenets/studentsign.js";
-import Teachersign from "../../componenets/teachersign.js";
-export default function Signup() {
-    const searchparams=useSearchParams();
-    const role=searchparams.get("role");
-    return (
-        <>
-     {
-        role=="School" && <Schoolsign></Schoolsign>
-     }
-    {
-        role=="Student" && <Studentsign></Studentsign>
-    }
-    {
-        role=="Teacher" && <Teachersign></Teachersign>
-    }
-        </>
-    )
+import { Suspense } from "react";
+import Signup from "./signuppage.js";;
+
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading login form...</div>}>
+      <Signup />
+    </Suspense>
+  );
 }
